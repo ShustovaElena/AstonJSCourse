@@ -39,8 +39,8 @@ Company.store = {
   money: 0,
 };
 
-Company.addStaff = function({name, income = 0}) {
-  this.store.staffList.push({name, income});
+Company.addStaff = function({ name, income = 0 }) {
+  this.store.staffList.push({ name, income });
   this.store.countStaff++;
 };
 
