@@ -1,29 +1,25 @@
 import { CarFactory } from "./carFactory.js";
 import { CARS } from "./constants.js";
+import { user_choose } from "./constants.js";
 
-class Game {
-  start() {
-    this.createPlayerCar();
-    this.createRivalCar(2);
-  }
+export class Game {
 
   createPlayerCar() {
+    const { carType, carName, improveName, improveValue } = user_choose;
     const factory = new CarFactory();
-    const myCar = factory.createCar('Civilian', 'My Car');
-    myCar.improveCar('fuel', 2);
+    const myCar = factory.createCar(carType, carName);
+    myCar.improveCar(improveName, +improveValue);
     CARS.push(myCar);
     myCar.calculatePowerReserve();
   }
 
-  createRivalCar(countRivalCar) {
+  createRivalCar() {
+    const { rivalCarCount } = user_choose;
     const factory = new CarFactory();
-    for (let i = 1; i <= countRivalCar; i++) {
+    for (let i = 1; i <= rivalCarCount; i++) {
       const rivalCar = factory.createRivalCar(`Car ${i}`);
       CARS.push(rivalCar);
     }
+    console.log(CARS);
   }
 }
-
-const game = new Game();
-game.start();
-console.log(CARS);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Death Race</title>
+    </head>
+    <body>
+        <h1>Игра "Гонки на выживание"</h1>
+
+        <div id="root">
+            <h3>Выберите тип автомобиль</h3>
+            <select id="select-car-type">
+                <option value="Civilian" selected>Civilian</option>
+                <option value="Sport">Sport</option>
+                <option value="Military">Military</option>
+            </select>
+
+            <h3>Задайте имя автомобиля</h3>
+            <input placeholder="Введите имя машины" id="input-car-name" />
+            <button id="create-car">Создать автомобиль</button>
+
+            <div id="car-type-propertes"></div>
+            <div id="car-improve-propertes"></div>
+        </div>
+
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>
