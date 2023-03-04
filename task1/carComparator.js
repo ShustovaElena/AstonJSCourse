@@ -1,4 +1,4 @@
-import { DEFAULT_FUEL, WAY, RATIO, DEFAULT_DURABILITY, SPEED_RATIO, DEFAULT_SPEED, CARS } from "./constants.js";
+import { DEFAULT_FUEL, WAY, RATIO, DEFAULT_DURABILITY, SPEED_RATIO, DEFAULT_SPEED } from "./constants.js";
 
 export class CarCorporator {
 

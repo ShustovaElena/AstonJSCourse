@@ -20,6 +20,5 @@ export class Game {
       const rivalCar = factory.createRivalCar(`Car ${i}`);
       CARS.push(rivalCar);
     }
-    console.log(CARS);
   }
 }

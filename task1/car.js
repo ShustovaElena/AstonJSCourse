@@ -1,4 +1,4 @@
-import { DEFAULT_FUEL, WAY, RATIO, user_choose } from "./constants.js";
+import { DEFAULT_FUEL, WAY, RATIO } from "./constants.js";
 
 export class Car {
   #maxPoints = 12;

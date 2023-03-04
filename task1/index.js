@@ -8,7 +8,6 @@ const game = new Game();
 
 const defineUserChoice = (event, property) => {
   user_choose[property] = event.target.value;
-  console.log(user_choose);
 };
 
 const showStartPage = () => {
@@ -101,7 +100,6 @@ export const getRivalCar = () => {
 };
 
 const getCompareCars = (cars) => {
-  console.log(cars);
   root.innerHTML = ``;
   root.innerHTML = `
   <h3 class="power-reserve">Запас хода вашего автомобиля: ${user_choose.powerReserve}</h3>
