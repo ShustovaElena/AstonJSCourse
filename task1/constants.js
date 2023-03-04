@@ -33,4 +33,5 @@ export const user_choose = {
   rivalCarCount: 0,
   improveName: '',
   improveValue: 0,
+  powerReserve: 0,
 }

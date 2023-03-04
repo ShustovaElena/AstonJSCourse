@@ -1,13 +1,8 @@
 import { CarCorporator } from "./carComparator.js";
-import { user_choose, CAR_TYPES_PROPERTES, CAR_FIELD_TYPES, CARS } from "./constants.js";
+import { user_choose, CAR_TYPES_PROPERTES, CARS } from "./constants.js";
 import {Game} from './game.js';
 
 const root = document.getElementById('root');
-const carType = document.getElementById('select-car-type');
-const carName = document.getElementById('input-car-name');
-const createCarButton = document.getElementById('create-car');
-const carTypePropertes = document.getElementById('car-type-propertes');
-const carImprovePropertes = document.getElementById('car-improve-propertes');
 
 const game = new Game(); 
 
@@ -16,7 +11,36 @@ const defineUserChoice = (event, property) => {
   console.log(user_choose);
 };
 
+const showStartPage = () => {
+  root.innerHTML = `
+  <h3>Выберите тип автомобиль</h3>
+  <select id="select-car-type">
+      <option value="Civilian" selected>Civilian</option>
+      <option value="Sport">Sport</option>
+      <option value="Military">Military</option>
+  </select>
+
+  <h3>Задайте имя автомобиля</h3>
+  <input placeholder="Введите имя машины" id="input-car-name" />
+  <button id="create-car">Создать автомобиль</button>
+
+  <div id="car-type-propertes"></div>
+  <div id="car-improve-propertes"></div>
+  `;
+
+  const carType = document.getElementById('select-car-type');
+  const carName = document.getElementById('input-car-name');
+  const createCarButton = document.getElementById('create-car');
+  
+  carType.addEventListener('change', (event) => defineUserChoice(event, 'carType'));
+  carName.addEventListener('change', (event) => defineUserChoice(event, 'carName'));
+  createCarButton.addEventListener('click', showCarTypePropertes);
+  createCarButton.addEventListener('click', showCarImprovePropertes);
+};
+
 const showCarTypePropertes = () => {
+  const carTypePropertes = document.getElementById('car-type-propertes');
+
   carTypePropertes.innerHTML = `
     <h3>Характеристики автомобиля</h3>
     <p>Name: ${user_choose.carName}</p>
@@ -28,6 +52,8 @@ const showCarTypePropertes = () => {
 };
 
 const showCarImprovePropertes = () => {
+  const carImprovePropertes = document.getElementById('car-improve-propertes');
+
   carImprovePropertes.innerHTML = `
     <h3>Улучшить автомобиль</h3>
     <select id="improve-property-name">
@@ -36,7 +62,7 @@ const showCarImprovePropertes = () => {
       <option value="durability">durability</option>
       <option value="speed">speed</option>
    </select>
-    <input id="improve-property-value" placeholder="Введите значение изменяемого свойства">
+    <input id="improve-property-value" placeholder="Введите значение изменяемого свойства" min=1 max=2 type="number">
     <button id="improve-property-button">Улучшить</button>
   `;
 
@@ -50,12 +76,12 @@ const showCarImprovePropertes = () => {
   improvePropertyButton.addEventListener('click', getRivalCar);
 };
 
-const getRivalCar = () => {
+export const getRivalCar = () => {
   root.innerHTML = ``;
   root.innerHTML = `
-  <h3>Укажите количество автомобилей - соперников</h3>
-  <input id="rival-car-count" placeholder="Введите количество автомобилей - соперников">
-  <button id="rival-car-button">Установить</button>
+    <h3>Укажите количество автомобилей - соперников</h3>
+    <input id="rival-car-count" placeholder="Введите количество автомобилей - соперников">
+    <button id="rival-car-button">Установить</button>
   `;
 
   const rivalCarCount = document.getElementById('rival-car-count');
@@ -74,6 +100,8 @@ const getCompareCars = (cars) => {
   console.log(cars);
   root.innerHTML = ``;
   root.innerHTML = `
+  <h3>Запас хода вашего автомобиля: ${user_choose.powerReserve}</h3>
+
   <h3>Сравнительные характеристики автомобилей</h3>
   <table>
     <tr>
@@ -94,8 +122,5 @@ const getCompareCars = (cars) => {
   `;
 };
 
-carType.addEventListener('change', (event) => defineUserChoice(event, 'carType'));
-carName.addEventListener('change', (event) => defineUserChoice(event, 'carName'));
-createCarButton.addEventListener('click', showCarTypePropertes);
-createCarButton.addEventListener('click', showCarImprovePropertes);
+document.addEventListener('DOMContentLoaded', showStartPage);
 

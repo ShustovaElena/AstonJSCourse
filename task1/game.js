@@ -10,7 +10,7 @@ export class Game {
     const myCar = factory.createCar(carType, carName);
     myCar.improveCar(improveName, +improveValue);
     CARS.push(myCar);
-    myCar.calculatePowerReserve();
+    user_choose.powerReserve = myCar.calculatePowerReserve();
   }
 
   createRivalCar() {
