@@ -15,7 +15,8 @@ const showStartPage = () => {
   root.innerHTML = `
   <h3>Выберите тип автомобиль</h3>
   <select id="select-car-type">
-      <option value="Civilian" selected>Civilian</option>
+      <option value=""></option>
+      <option value="Civilian">Civilian</option>
       <option value="Sport">Sport</option>
       <option value="Military">Military</option>
   </select>
@@ -43,11 +44,13 @@ const showCarTypePropertes = () => {
 
   carTypePropertes.innerHTML = `
     <h3>Характеристики автомобиля</h3>
-    <p>Name: ${user_choose.carName}</p>
-    <p>Fuel: ${CAR_TYPES_PROPERTES[user_choose.carType].fuel}</p>
-    <p>Low Fuel Consumption: ${CAR_TYPES_PROPERTES[user_choose.carType].lowFuelConsumption}</p>
-    <p>Durability: ${CAR_TYPES_PROPERTES[user_choose.carType].durability}</p>
-    <p>Speed: ${CAR_TYPES_PROPERTES[user_choose.carType].speed}</p> 
+    <div class="car-propertes">
+      <p>Name: ${user_choose.carName}</p>
+      <p>Fuel: ${CAR_TYPES_PROPERTES[user_choose.carType].fuel}</p>
+      <p>Low Fuel Consumption: ${CAR_TYPES_PROPERTES[user_choose.carType].lowFuelConsumption}</p>
+      <p>Durability: ${CAR_TYPES_PROPERTES[user_choose.carType].durability}</p>
+      <p>Speed: ${CAR_TYPES_PROPERTES[user_choose.carType].speed}</p> 
+    </div>
   `;
 };
 
@@ -57,12 +60,13 @@ const showCarImprovePropertes = () => {
   carImprovePropertes.innerHTML = `
     <h3>Улучшить автомобиль</h3>
     <select id="improve-property-name">
+      <option value=""></option>
       <option value="fuel">fuel</option>
       <option value="lowFuelConsumption">lowFuelConsumption</option>
       <option value="durability">durability</option>
       <option value="speed">speed</option>
    </select>
-    <input id="improve-property-value" placeholder="Введите значение изменяемого свойства" min=1 max=2 type="number">
+    <input id="improve-property-value" min=1 max=2 type="number">
     <button id="improve-property-button">Улучшить</button>
   `;
 
@@ -100,10 +104,10 @@ const getCompareCars = (cars) => {
   console.log(cars);
   root.innerHTML = ``;
   root.innerHTML = `
-  <h3>Запас хода вашего автомобиля: ${user_choose.powerReserve}</h3>
+  <h3 class="power-reserve">Запас хода вашего автомобиля: ${user_choose.powerReserve}</h3>
 
   <h3>Сравнительные характеристики автомобилей</h3>
-  <table>
+  <table class="table">
     <tr>
       <th>Car name</th>
       <th>Power Reserve</th>

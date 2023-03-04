@@ -1,0 +1,94 @@
+:root {
+  --main-color: blue;
+  --main-bg-color: rgba(248, 248, 44, 0.685);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  letter-spacing: 2px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+
+.title {
+  color: var(--main-color);
+  text-transform: uppercase;
+}
+
+#select-car-type {
+  width: 35%;
+  padding: 5px;
+}
+
+#input-car-name {
+  width: 21%;
+  padding: 5px;
+}
+
+#create-car,
+#improve-property-button,
+#rival-car-button {
+  padding: 5px;
+  text-transform: uppercase;
+  background-color: var(--main-bg-color);
+  border: 2px solid var(--main-color);
+}
+
+.car-propertes {
+  margin: 0 auto;
+  width: 35%;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-bg-color);
+  text-align: left;
+}
+
+.car-propertes p {
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
+#improve-property-name {
+  width: 20%;
+  padding: 5px;
+}
+
+#improve-property-value,
+#rival-car-count {
+  padding: 5px;
+}
+
+#improve-property-button {
+  width: 10%;
+}
+
+#rival-car-count {
+  width: 33%;
+}
+
+.power-reserve {
+  margin: 0 auto;
+  width: 44%;
+  border-bottom: 3px dotted var(--main-color);
+}
+
+.table {
+  margin: 0 auto;
+  width: 44%;
+  background-color: var(--main-bg-color);
+}
+
+.table th {
+  text-transform: uppercase;
+  color: var(--main-color);
+}
+
+.table td,
+.table th {
+  padding: 5px;
+  border: 1px solid var(--main-color);
+}
