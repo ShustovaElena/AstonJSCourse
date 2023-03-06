@@ -31,7 +31,7 @@ export const createCardPage = (card) => {
     </div>
   `;
 
-  // closeCardPage();
+  closeCardPage();
 };
 
 export const openCardPage = () => {
@@ -39,14 +39,15 @@ export const openCardPage = () => {
     if (event.target.tagName === 'A') {
     const target = (event.target.id);
     const id = target.split('-')[1];
+    // history.pushState({page: 1}, null, `${id}`)
     const card = await getPhotoById(id);
     createCardPage(card);
     }
   });
 };
 
-// export const closeCardPage = () => {
-//   document.getElementById('close-button').addEventListener('click', () => {
-//     location.hash = '/'; //?????
-//   });
-// };
+export const closeCardPage = () => {
+  document.getElementById('close-button').addEventListener('click', () => {
+    window.history.back();
+  });
+};
