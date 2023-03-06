@@ -10,3 +10,10 @@ export const getPhotos = async (pageLimit, pageCount) => {
       total: headers.get('x-total-count') || null
   };
 };
+
+export const getPhotoById = async (id) => {
+  console.log(id);
+  const response = await fetch(`${BASE_URL}/photos/${id}`);
+  const data = await response.json();
+  return data;
+};

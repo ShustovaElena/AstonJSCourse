@@ -1,4 +1,5 @@
 import { createCard } from "./card.js";
+import { openCardPage } from "./cardPage.js";
 
 export const createCards = (cards) => {
   const root = document.getElementById('root');
@@ -10,8 +11,10 @@ export const createCards = (cards) => {
     style="gap: 10px; padding-top: 40px"
   >
       ${cards.map((card) => {
-        return createCard(card.url, card.title);
+        return createCard(card.id, card.url, card.title);
       })}
     </div>
   `;
+
+  openCardPage();
 };
