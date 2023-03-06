@@ -1,6 +1,7 @@
 import { createCard } from "./card.js";
 
 export const createCards = (cards) => {
+  console.log('cards', cards);
   const root = document.getElementById('root');
 
   root.innerHTML = `
@@ -9,7 +10,9 @@ export const createCards = (cards) => {
     class="d-flex flex-wrap justify-content-around"
     style="gap: 10px; padding-top: 40px"
   >
-      ${cards.map((card) => createCard(card.src, card.title))}
+      ${cards.map((card) => {
+        return createCard(card.url, card.title);
+      })}
     </div>
   `;
 };

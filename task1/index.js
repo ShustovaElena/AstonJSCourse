@@ -1,5 +1,7 @@
 import { createCards } from "./components/cards.js";
 import { createPagination } from "./components/pagination.js";
+import { getPhotos } from "./components/api.js";
 
-createCards([{src: '1', title: '1'}]);
+const data = await getPhotos(10, 1);
+createCards(data);
 createPagination();
