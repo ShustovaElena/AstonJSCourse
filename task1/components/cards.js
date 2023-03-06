@@ -1,7 +1,6 @@
 import { createCard } from "./card.js";
 
 export const createCards = (cards) => {
-  console.log('cards', cards);
   const root = document.getElementById('root');
 
   root.innerHTML = `
