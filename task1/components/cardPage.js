@@ -1,7 +1,8 @@
 import { getPhotoById } from "./api.js";
+import { createMainPage } from "./mainPage.js";
 
 export const createCardPage = (card) => {
-  const {albumId, id, title, url, thumbnailUrl } = card;
+  const { albumId, id, title, url, thumbnailUrl } = card;
   const root = document.getElementById('root');
 
   root.innerHTML = '';
@@ -37,11 +38,12 @@ export const createCardPage = (card) => {
 export const openCardPage = () => {
   document.getElementById('cards')?.addEventListener('click', async (event) => {
     if (event.target.tagName === 'A') {
-    const target = (event.target.id);
-    const id = target.split('-')[1];
-    // history.pushState({page: 1}, null, `${id}`)
-    const card = await getPhotoById(id);
-    createCardPage(card);
+      const target = event.target.id;
+      const id = target.split('-')[1];
+      const card = await getPhotoById(id);
+
+      history.pushState(null, null, `${id}`);
+      createCardPage(card);
     }
   });
 };
@@ -49,5 +51,6 @@ export const openCardPage = () => {
 export const closeCardPage = () => {
   document.getElementById('close-button').addEventListener('click', () => {
     window.history.back();
+    createMainPage();
   });
 };

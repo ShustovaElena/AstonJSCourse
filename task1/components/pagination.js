@@ -1,12 +1,15 @@
-import { getPhotos } from "./api.js";
-import { createCards } from "./cards.js";
 import { PAGE_PARAMS } from "../constants.js";
+import { createMainPage } from "./mainPage.js";
 
 export const createPagination = (activePage, lastPage) => {
   const root = document.getElementById('root');
   const nav = document.createElement('nav');
   nav.style.paddingTop = '40px';
 
+  if (activePage === 1) {
+    activePage++;
+  }
+ 
   nav.innerHTML = `
     <nav style="padding-top: 40px">
       <ul class="pagination justify-content-center">
@@ -34,8 +37,6 @@ export const createPagination = (activePage, lastPage) => {
   getPagination();
 };
 
-let pageNumber = 3;
-
 const getPagination = () => {
   defineValuePaginator();
   increaseValue();
@@ -43,43 +44,33 @@ const getPagination = () => {
 };
 
 const defineValuePaginator = () => {
-  const { limit, total } = PAGE_PARAMS;
+  const { total } = PAGE_PARAMS;
 
   document.getElementById('paginator')?.addEventListener('click', async (event) => {
-    pageNumber = event.target.innerText;
-    if (pageNumber === '...') { // как это должно работать?
-      pageNumber = 3;
+    PAGE_PARAMS.pageNumber = event.target.innerText;
+    if (PAGE_PARAMS.pageNumber === '...') {
+      PAGE_PARAMS.pageNumber = 3;
     }
-    if (pageNumber === '1') {
-      pageNumber = 2;
+    if (PAGE_PARAMS.pageNumber == total) {
+      PAGE_PARAMS.pageNumber = total - 1;
     }
-    if (pageNumber == total) {
-      pageNumber = total - 1;
-    }
-    const data = await getPhotos(limit, pageNumber);
-    createCards(data.data);
-    createPagination(+pageNumber, total);
+
+    createMainPage();
   });
 }
 
 const decreaseValue = async () => {
-  const { limit, total } = PAGE_PARAMS;
-
   document.getElementById('prev-button')?.addEventListener('click', async () => {
-    pageNumber <= 2 ? pageNumber = 2 : pageNumber -= 1;
-    const data = await getPhotos(limit, pageNumber);
-    createCards(data.data);
-    createPagination(+pageNumber, total);
+    PAGE_PARAMS.pageNumber <= 2 ? PAGE_PARAMS.pageNumber = 2 : PAGE_PARAMS.pageNumber -= 1;
+    createMainPage();
     });
 }
 
 const increaseValue = async () => {
-  const { limit, total } = PAGE_PARAMS;
+  const { total } = PAGE_PARAMS;
 
   document.getElementById('next-button')?.addEventListener('click', async () => {
-    pageNumber >= +total - 1 ? pageNumber = +total - 1 : pageNumber = +pageNumber + 1;
-    const data = await getPhotos(limit, pageNumber);
-    createCards(data.data);
-    createPagination(+pageNumber, +total);
+    PAGE_PARAMS.pageNumber >= +total - 1 ? PAGE_PARAMS.pageNumber = +total - 1 : PAGE_PARAMS.pageNumber = +PAGE_PARAMS.pageNumber + 1;
+    createMainPage();
   });
 }
