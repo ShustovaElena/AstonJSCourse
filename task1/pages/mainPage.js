@@ -1,10 +1,10 @@
 import { PAGE_PARAMS } from "../constants.js";
-import { createCards } from "./cards.js";
-import { createPagination } from "./pagination.js";
-import { getPhotos } from "./api.js";
+import { createCards } from "../components/cards.js";
+import { createPagination } from "../components/pagination.js";
+import { getPhotos } from "../components/api.js";
 
 export const createMainPage = async () => {
-  const { limit, total, pageNumber } = PAGE_PARAMS;
+  const { limit, pageNumber } = PAGE_PARAMS;
 
   const data = await getPhotos(limit, pageNumber);
 

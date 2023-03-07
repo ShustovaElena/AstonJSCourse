@@ -1,5 +1,5 @@
 import { PAGE_PARAMS } from "../constants.js";
-import { createMainPage } from "./mainPage.js";
+import { createMainPage } from "../pages/mainPage.js";
 
 export const createPagination = (activePage, lastPage) => {
   const root = document.getElementById('root');

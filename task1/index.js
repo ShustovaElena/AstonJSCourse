@@ -1,3 +1,3 @@
-import { createMainPage } from "./components/mainPage.js";
+import { createMainPage } from "./pages/mainPage.js";
 
 createMainPage();

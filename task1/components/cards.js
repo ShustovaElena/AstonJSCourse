@@ -1,5 +1,5 @@
 import { createCard } from "./card.js";
-import { openCardPage } from "./cardPage.js";
+import { openCardPage } from "../pages/cardPage.js";
 
 export const createCards = (cards) => {
   const root = document.getElementById('root');

@@ -1,4 +1,4 @@
-import { getPhotoById } from "./api.js";
+import { getPhotoById } from "../components/api.js";
 import { createMainPage } from "./mainPage.js";
 
 export const createCardPage = (card) => {
